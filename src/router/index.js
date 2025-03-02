@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TaskBoard from '@/pages/TaskForm.vue'
+import TaskBoard from '@/pages/TaskBoard.vue'
 
 import VueDraggable from 'vue-draggable'
 

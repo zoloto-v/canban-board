@@ -267,15 +267,15 @@ ul {
 }
 
 .drag-container {
-  height: 100%;
-  max-height: 100vh;
-  min-height: 100vh;
   max-width: 1000px;
   margin: 0 auto;
 }
 .drag-list {
   display: flex;
-  align-items: flex-start;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 20px 0;
+  box-sizing: border-box;
 
   @media (max-width: 690px) {
     display: block;
@@ -284,7 +284,6 @@ ul {
 .drag-column {
   flex: 1 1 250px;
   margin: 0 10px;
-  position: relative;
   background: #f7f7f7;
   overflow: hidden;
   border-radius: 10px;
@@ -317,7 +316,6 @@ ul {
   right: 10px;
 }
 .drag-inner-list {
-  /* height: 85vh; */
   overflow: auto;
 }
 .drag-item {
