@@ -282,6 +282,8 @@ ul {
   }
 }
 .drag-column {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 250px;
   margin: 0 10px;
   background: #f7f7f7;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="marginTop: 10px">
     <form v-show="isVisible" method="post" @submit.prevent="onSubmit" class="task-form" ref="formRef">
       <textarea
         name="task"
@@ -22,7 +22,7 @@
       </div>
     </form>
     <div v-show="!isVisible" style="{display: flex, flexDirection: row, alignItems: center}">
-      <TransparentButton text="Добавить" :onClick="openCreateTaskForm" :style="{color:'#66B8FF'}">
+      <TransparentButton text="Добавить" :onClick="openCreateTaskForm" style="color: #66B8FF; margin-bottom: 10px">
         <template v-slot:icon>
           <FontAwesomeIcon icon="fa-solid fa-plus" style="color: #66B8FF;"/>&nbsp;
         </template>

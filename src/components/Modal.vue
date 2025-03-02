@@ -46,8 +46,9 @@ export default {
   }
   .modal__container {
     width: 300px;
-    padding: 24px 40px 40px 40px;
+    padding: 40px;
     margin: 0px auto;
+    position: relative;
     border-radius: 8px;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
