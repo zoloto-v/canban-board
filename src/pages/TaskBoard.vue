@@ -75,6 +75,7 @@ import Menu from '@/components/Menu.vue'
 import TransparentButton from '@/components/TransparentButton.vue'
 import { NOTIFY_STATUSES } from '@/constants'
 import Modal from '@/components/Modal.vue'
+import { trimText } from '@/utils'
 
 export default {
   name: 'TaskBoard',
@@ -140,15 +141,13 @@ export default {
         dropzoneSelector: '.drag-inner-list',
         draggableSelector: '.drag-item',
         onDrop: function (value) {
-          console.log('onDrop')
-
           const { type = '' } = value?.droptarget?.dataset
           const { text = '' } = value?.items.length && value?.items[0]?.dataset
 
           this.$notify({
             group: 'custom-template',
             title: `Задача перенесена в "${NOTIFY_STATUSES.get(type)}"`,
-            text
+            text: trimText(text)
           })
         }
       },
@@ -191,7 +190,7 @@ export default {
         this.$notify({
           group: 'custom-template',
           title: `Задача создана в "${obj.text}"`,
-          text: e.text
+          text: trimText(e.text)
         })
       }
     },
@@ -206,7 +205,7 @@ export default {
         this.$notify({
           group: 'custom-template',
           title: 'Задача удалена',
-          text: this.modalData.text
+          text: trimText(this.modalData.text)
         })
 
         this.onClose()

@@ -2,7 +2,6 @@
   <notifications
     group="custom-template"
     :width="300"
-    :duration=40000
     position="bottom right"
   >
     <template slot="body" slot-scope="props">
