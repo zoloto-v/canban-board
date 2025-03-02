@@ -74,20 +74,3 @@ h6 {
   font-weight: 300;
   line-height: 21px;
 }
-
-input[type=text] {
-  width: 190px;
-  font-size: 14px;
-  line-height: 18px;
-  padding: 14px 10px;
-  color: #E1E1E1;
-  border: 1px solid #E1E1E1;
-  outline: none;
-  transition: border 0.2s ease-in-out;
-}
-
-input[type=text]:active,
-input[type=text]:focus {
-  color: #403432;
-  border: 1px solid #403432
-}

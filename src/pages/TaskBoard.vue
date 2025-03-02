@@ -318,6 +318,7 @@ ul {
   right: 10px;
 }
 .drag-inner-list {
+  flex-grow: 1;
   overflow: auto;
 }
 .drag-item {

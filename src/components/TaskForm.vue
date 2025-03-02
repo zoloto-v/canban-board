@@ -1,28 +1,29 @@
 <template>
-  <div style="marginTop: 10px">
+  <div>
     <form v-show="isVisible" method="post" @submit.prevent="onSubmit" class="task-form" ref="formRef">
       <textarea
         name="task"
         class="task-form__textarea"
         id="text"
-        placeholder="Введите текст ..."
+        placeholder="Введите текст..."
         ref="text"
+        autfocus
       ></textarea>
       <div class="task-form__controls">
-        <TransparentButton text="" :onClick="closeCreateTaskForm">
+        <TransparentButton text="" :onClick="closeForm">
           <template v-slot:icon>
-            <FontAwesomeIcon icon="fa-solid fa-close" style="color: #F53D5C; font-size: 10px;"/>&nbsp;
+            <FontAwesomeIcon icon="fa-solid fa-close" style="color: #F53D5C; font-size: 14px;"/>&nbsp;
           </template>
         </TransparentButton>
-        <TransparentButton text="" :onClick="saveTask">
+        <TransparentButton type="submit" text="" :onClick="saveTask">
           <template v-slot:icon>
-            <FontAwesomeIcon icon="fa-solid fa-check" style="color: #22C33D; font-size: 10px;"/>&nbsp;
+            <FontAwesomeIcon icon="fa-solid fa-check" style="color: #22C33D; font-size: 14px;"/>&nbsp;
           </template>
         </TransparentButton>
       </div>
     </form>
-    <div v-show="!isVisible" style="{display: flex, flexDirection: row, alignItems: center}">
-      <TransparentButton text="Добавить" :onClick="openCreateTaskForm" style="color: #66B8FF; margin-bottom: 10px">
+    <div v-show="!isVisible" style="display: flex; flex-direction: row; align-items: center;">
+      <TransparentButton text="Добавить" :onClick="openForm" style="color: #66B8FF; margin: 5px 0;">
         <template v-slot:icon>
           <FontAwesomeIcon icon="fa-solid fa-plus" style="color: #66B8FF;"/>&nbsp;
         </template>
@@ -43,26 +44,37 @@ export default {
     }
   },
   methods: {
-    openCreateTaskForm: function (e) {
+    openForm: function (e) {
       this.isVisible = true
-      console.log(this)
+      setTimeout(() => {
+        this.$refs.text.blur()
+        this.$refs.text.focus()
+      })
+    },
+    closeForm: function (e) {
+      this.clearForm()
+      this.isVisible = false
+    },
+    clearForm: function () {
+      this.$refs.text.value = ''
     },
     saveTask: function () {},
     onSubmit: function () {
       try {
         const formData = new FormData(this.$refs.formRef)
-        const searchText = formData.get('task')
+        const text = formData.get('task')
 
-        this.$props.addTask({
-          type: this.$props.type,
-          text: searchText
-        })
+        if (text) {
+          this.$props.addTask({
+            type: this.$props.type,
+            text
+          })
+
+          this.closeForm()
+        }
       } catch (err) {
         console.error(err)
       }
-    },
-    closeCreateTaskForm: function (e) {
-      this.isVisible = false
     }
   },
   components: {
@@ -86,6 +98,12 @@ export default {
   padding: 8px;
   padding-right: 30px;
   border-radius: 5px;
+}
+.task-form__textarea:active,
+.task-form__textarea:focus,
+.task-form__textarea:focus-visible {
+  outline: none;
+  border: 1px solid #66B8FF;
 }
 .task-form__controls {
   position: absolute;

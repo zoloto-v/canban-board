@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="onClick" class="button" :class="classes" :style="styles">
+  <button :type="type || 'button'" v-on:click="onClick" class="button" :class="classes" :style="styles">
     <slot name="icon"></slot>
     <template>
       {{ text }}
@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'TransparentButton',
-  props: ['icon', 'text', 'classes', 'onClick', 'styles']
+  props: ['icon', 'text', 'classes', 'onClick', 'styles', 'type']
 }
 </script>
 
@@ -22,6 +22,7 @@ export default {
   padding: 5px;
   border: none;
   background: none;
+  cursor: pointer;
 }
 .button.button_transparent {
   display: flex;
